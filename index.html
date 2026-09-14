@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="FastFile - Secure high speed file transfer">
+
+<meta name="description"
+content="FastFile - Secure high speed file transfer">
+
 <title>FastFile — Secure File Transfer</title>
 
 <style>
@@ -113,6 +116,11 @@ input[type=file]{
     border-radius:13px;
     font-weight:700;
     cursor:pointer;
+    user-select:none;
+}
+
+.choose:active{
+    transform:scale(.97);
 }
 
 #fileInfo{
@@ -271,6 +279,7 @@ footer{
 }
 
 @media(max-width:650px){
+
     header{
         padding:18px 5%;
     }
@@ -301,18 +310,30 @@ footer{
 <body>
 
 <header>
-    <div class="logo">⚡ Fast<span>File</span></div>
-    <div class="badge">🔒 Secure Transfer</div>
+    <div class="logo">
+        ⚡ Fast<span>File</span>
+    </div>
+
+    <div class="badge">
+        🔒 Secure Transfer
+    </div>
 </header>
 
+
 <section class="hero">
-    <h1>Send Files.<br><span>Fast & Secure.</span></h1>
+
+    <h1>
+        Send Files.<br>
+        <span>Fast & Secure.</span>
+    </h1>
 
     <p>
         Transfer images, videos, PDFs, ZIP files and other files
         without changing their original quality.
     </p>
+
 </section>
+
 
 <main class="container">
 
@@ -325,62 +346,119 @@ footer{
     <p>or choose a file from your device</p>
 
     <label class="choose">
+
         Choose File
-        <input type="file" id="fileInput">
+
+        <input
+            type="file"
+            id="fileInput"
+            accept="*/*"
+        >
+
     </label>
+
 
     <div id="fileInfo">
 
-        <div class="file-name" id="fileName"></div>
+        <div
+            class="file-name"
+            id="fileName">
+        </div>
 
-        <div class="file-meta" id="fileMeta"></div>
+        <div
+            class="file-meta"
+            id="fileMeta">
+        </div>
 
-        <div class="progress-box" id="progressBox">
+
+        <div
+            class="progress-box"
+            id="progressBox">
 
             <div class="progress">
-                <div class="progress-bar" id="progressBar"></div>
+
+                <div
+                    class="progress-bar"
+                    id="progressBar">
+                </div>
+
             </div>
 
-            <div class="status" id="status">
-                Preparing...
+            <div
+                class="status"
+                id="status">
+                Ready
             </div>
 
         </div>
+
 
         <div class="actions">
 
-            <button class="uploadBtn" id="uploadBtn">
+            <button
+                class="uploadBtn"
+                id="uploadBtn">
+
                 ⬆ Upload to FastFile
+
             </button>
 
-            <button class="download" id="downloadBtn" disabled>
+
+            <button
+                class="download"
+                id="downloadBtn"
+                disabled>
+
                 ⬇ Download
+
             </button>
 
-            <button class="share" id="shareBtn" disabled>
+
+            <button
+                class="share"
+                id="shareBtn"
+                disabled>
+
                 🔗 Copy Link
+
             </button>
 
-            <button class="clear" id="clearBtn">
+
+            <button
+                class="clear"
+                id="clearBtn">
+
                 ✕ Remove
+
             </button>
 
         </div>
 
-        <div class="linkBox" id="linkBox">
+
+        <div
+            class="linkBox"
+            id="linkBox">
 
             <div class="linkTitle">
                 Shareable download link
             </div>
 
-            <div class="link" id="fileLink"></div>
+            <div
+                class="link"
+                id="fileLink">
+            </div>
 
         </div>
 
-        <div class="hash" id="hashBox">
+
+        <div
+            class="hash"
+            id="hashBox">
 
             <strong>SHA-256:</strong>
-            <span id="hash"></span>
+
+            <span id="hash">
+            </span>
 
         </div>
 
@@ -388,35 +466,63 @@ footer{
 
 </div>
 
+
 <div class="features">
 
     <div class="card">
-        <div class="card-icon">⚡</div>
-        <h3>Fast</h3>
+
+        <div class="card-icon">
+            ⚡
+        </div>
+
+        <h3>
+            Fast
+        </h3>
+
         <p>
             High-speed upload directly to FastFile storage.
         </p>
+
     </div>
 
+
     <div class="card">
-        <div class="card-icon">🔒</div>
-        <h3>Secure</h3>
+
+        <div class="card-icon">
+            🔒
+        </div>
+
+        <h3>
+            Secure
+        </h3>
+
         <p>
             Files are stored as original binary data with SHA-256 verification.
         </p>
+
     </div>
 
+
     <div class="card">
-        <div class="card-icon">📦</div>
-        <h3>Any File</h3>
+
+        <div class="card-icon">
+            📦
+        </div>
+
+        <h3>
+            Any File
+        </h3>
+
         <p>
             Images, videos, PDFs, ZIPs, APKs and other file types.
         </p>
+
     </div>
 
 </div>
 
 </main>
+
 
 <footer>
     © 2026 FastFile — Secure File Transfer
@@ -426,7 +532,7 @@ footer{
 <script>
 
 /* =========================================
-   SUPABASE CONFIGURATION
+   SUPABASE
 ========================================= */
 
 const SUPABASE_URL =
@@ -497,14 +603,12 @@ const fileLink =
 ========================================= */
 
 let selectedFile = null;
-
 let uploadedPath = null;
-
 let downloadURL = null;
 
 
 /* =========================================
-   FORMAT FILE SIZE
+   FILE SIZE
 ========================================= */
 
 function formatSize(bytes){
@@ -523,7 +627,7 @@ function formatSize(bytes){
 
 
 /* =========================================
-   CREATE SAFE FILE NAME
+   FILE NAME
 ========================================= */
 
 function createFileName(file){
@@ -533,10 +637,10 @@ function createFileName(file){
         ? "." + file.name.split(".").pop()
         : "";
 
-    const random =
-        crypto.randomUUID();
-
-    return Date.now() + "-" + random + extension;
+    return Date.now() +
+        "-" +
+        crypto.randomUUID() +
+        extension;
 }
 
 
@@ -569,10 +673,12 @@ async function calculateHash(file){
 
         const hashHex =
             hashArray
-            .map(
-                b => b.toString(16).padStart(2,"0")
-            )
-            .join("");
+                .map(
+                    b =>
+                    b.toString(16)
+                     .padStart(2,"0")
+                )
+                .join("");
 
         hashText.textContent =
             hashHex;
@@ -587,19 +693,27 @@ async function calculateHash(file){
 
 
 /* =========================================
-   SHOW SELECTED FILE
+   SHOW FILE
 ========================================= */
 
 function showFile(file){
 
-    selectedFile = file;
+    if(!file)
+        return;
 
-    uploadedPath = null;
+    selectedFile =
+        file;
 
-    downloadURL = null;
+    uploadedPath =
+        null;
+
+    downloadURL =
+        null;
+
 
     fileName.textContent =
         file.name;
+
 
     fileMeta.textContent =
         "Type: " +
@@ -607,46 +721,58 @@ function showFile(file){
         " • Size: " +
         formatSize(file.size);
 
+
     fileInfo.style.display =
         "block";
+
 
     progressBox.style.display =
         "none";
 
+
     progressBar.style.width =
         "0%";
+
 
     statusText.textContent =
         "Ready to upload";
 
+
     linkBox.style.display =
         "none";
+
+
+    uploadBtn.disabled =
+        false;
+
 
     downloadBtn.disabled =
         true;
 
+
     shareBtn.disabled =
         true;
 
-    uploadBtn.disabled =
-        false;
 
     calculateHash(file);
 }
 
 
 /* =========================================
-   FILE INPUT
+   FILE SELECT
 ========================================= */
 
 fileInput.addEventListener(
     "change",
-    event => {
+    function(){
 
-        if(event.target.files.length){
+        if(
+            this.files &&
+            this.files.length > 0
+        ){
 
             showFile(
-                event.target.files[0]
+                this.files[0]
             );
 
         }
@@ -659,40 +785,26 @@ fileInput.addEventListener(
    DRAG & DROP
 ========================================= */
 
-["dragenter","dragover"].forEach(
-    eventName => {
+dropZone.addEventListener(
+    "dragover",
+    function(event){
 
-        dropZone.addEventListener(
-            eventName,
-            event => {
+        event.preventDefault();
 
-                event.preventDefault();
-
-                dropZone.classList.add(
-                    "drag"
-                );
-
-            }
+        dropZone.classList.add(
+            "drag"
         );
 
     }
 );
 
 
-["dragleave","drop"].forEach(
-    eventName => {
+dropZone.addEventListener(
+    "dragleave",
+    function(){
 
-        dropZone.addEventListener(
-            eventName,
-            event => {
-
-                event.preventDefault();
-
-                dropZone.classList.remove(
-                    "drag"
-                );
-
-            }
+        dropZone.classList.remove(
+            "drag"
         );
 
     }
@@ -701,14 +813,24 @@ fileInput.addEventListener(
 
 dropZone.addEventListener(
     "drop",
-    event => {
+    function(event){
 
-        const files =
-            event.dataTransfer.files;
+        event.preventDefault();
 
-        if(files.length){
+        dropZone.classList.remove(
+            "drag"
+        );
 
-            showFile(files[0]);
+
+        if(
+            event.dataTransfer &&
+            event.dataTransfer.files &&
+            event.dataTransfer.files.length
+        ){
+
+            showFile(
+                event.dataTransfer.files[0]
+            );
 
         }
 
@@ -717,16 +839,18 @@ dropZone.addEventListener(
 
 
 /* =========================================
-   UPLOAD TO SUPABASE
+   UPLOAD BUTTON
 ========================================= */
 
 uploadBtn.addEventListener(
     "click",
-    () => {
+    function(){
 
         if(!selectedFile){
 
-            alert("Please select a file first.");
+            alert(
+                "Please select a file first."
+            );
 
             return;
         }
@@ -737,6 +861,10 @@ uploadBtn.addEventListener(
 );
 
 
+/* =========================================
+   UPLOAD
+========================================= */
+
 function uploadFile(){
 
     const file =
@@ -745,6 +873,7 @@ function uploadFile(){
     const path =
         createFileName(file);
 
+
     const url =
         SUPABASE_URL +
         "/storage/v1/object/" +
@@ -752,14 +881,18 @@ function uploadFile(){
         "/" +
         encodeURIComponent(path);
 
+
     progressBox.style.display =
         "block";
+
 
     progressBar.style.width =
         "0%";
 
+
     statusText.textContent =
         "Uploading...";
+
 
     uploadBtn.disabled =
         true;
@@ -787,16 +920,20 @@ function uploadFile(){
         SUPABASE_KEY
     );
 
+
     xhr.setRequestHeader(
         "Authorization",
-        "Bearer " + SUPABASE_KEY
+        "Bearer " +
+        SUPABASE_KEY
     );
+
 
     xhr.setRequestHeader(
         "Content-Type",
         file.type ||
         "application/octet-stream"
     );
+
 
     xhr.setRequestHeader(
         "x-upsert",
@@ -806,18 +943,22 @@ function uploadFile(){
 
     xhr.upload.addEventListener(
         "progress",
-        event => {
+        function(event){
 
             if(event.lengthComputable){
 
                 const percent =
                     Math.round(
-                        (event.loaded /
-                        event.total) * 100
+                        (
+                            event.loaded /
+                            event.total
+                        ) * 100
                     );
+
 
                 progressBar.style.width =
                     percent + "%";
+
 
                 statusText.textContent =
                     "Uploading... " +
@@ -831,7 +972,7 @@ function uploadFile(){
 
 
     xhr.onload =
-        async () => {
+        async function(){
 
             if(
                 xhr.status >= 200 &&
@@ -841,21 +982,27 @@ function uploadFile(){
                 uploadedPath =
                     path;
 
+
                 progressBar.style.width =
                     "100%";
+
 
                 statusText.textContent =
                     "Upload complete ✓";
 
+
                 uploadBtn.disabled =
                     true;
 
+
                 await createSignedLink();
+
 
             }else{
 
                 let message =
                     "Upload failed.";
+
 
                 try{
 
@@ -864,21 +1011,22 @@ function uploadFile(){
                             xhr.responseText
                         );
 
-                    if(response.message)
-                        message =
-                            response.message;
 
-                    else if(response.error)
-                        message =
-                            response.error;
+                    message =
+                        response.message ||
+                        response.error ||
+                        message;
 
-                }catch(e){}
+                }catch(error){}
+
 
                 statusText.textContent =
                     "Upload failed";
 
+
                 uploadBtn.disabled =
                     false;
+
 
                 alert(
                     "Upload failed:\n\n" +
@@ -893,13 +1041,15 @@ function uploadFile(){
 
 
     xhr.onerror =
-        () => {
+        function(){
 
             statusText.textContent =
                 "Network error";
 
+
             uploadBtn.disabled =
                 false;
+
 
             alert(
                 "Network error. Please check your internet connection."
@@ -909,12 +1059,11 @@ function uploadFile(){
 
 
     xhr.send(file);
-
 }
 
 
 /* =========================================
-   CREATE SIGNED DOWNLOAD LINK
+   CREATE SIGNED LINK
 ========================================= */
 
 async function createSignedLink(){
@@ -930,7 +1079,11 @@ async function createSignedLink(){
     const url =
         SUPABASE_URL +
         "/storage/v1/object/sign/" +
-        BUCKET;
+        BUCKET +
+        "/" +
+        encodeURIComponent(
+            uploadedPath
+        );
 
 
     try{
@@ -954,9 +1107,6 @@ async function createSignedLink(){
                     },
 
                     body:JSON.stringify({
-                        paths:[
-                            uploadedPath
-                        ],
                         expiresIn:86400
                     })
                 }
@@ -978,23 +1128,8 @@ async function createSignedLink(){
         }
 
 
-        let signedPath = null;
-
-
-        if(
-            Array.isArray(data) &&
-            data[0]
-        ){
-
-            signedPath =
-                data[0].signedURL;
-
-        }else if(data.signedURL){
-
-            signedPath =
-                data.signedURL;
-
-        }
+        const signedPath =
+            data.signedURL;
 
 
         if(!signedPath){
@@ -1014,15 +1149,12 @@ async function createSignedLink(){
               signedPath;
 
 
-        /*
-          Add download parameter so browsers
-          save the original file.
-        */
-
         downloadURL +=
-            (downloadURL.includes("?")
-            ? "&"
-            : "?") +
+            (
+                downloadURL.includes("?")
+                ? "&"
+                : "?"
+            ) +
             "download=" +
             encodeURIComponent(
                 selectedFile.name
@@ -1032,24 +1164,31 @@ async function createSignedLink(){
         fileLink.textContent =
             downloadURL;
 
+
         linkBox.style.display =
             "block";
+
 
         downloadBtn.disabled =
             false;
 
+
         shareBtn.disabled =
             false;
 
+
         statusText.textContent =
             "File ready ✓";
+
 
     }catch(error){
 
         console.error(error);
 
+
         statusText.textContent =
             "Upload complete, but link creation failed.";
+
 
         alert(
             "File upload ho gaya, lekin download link nahi ban paya.\n\n" +
@@ -1057,7 +1196,6 @@ async function createSignedLink(){
         );
 
     }
-
 }
 
 
@@ -1067,10 +1205,11 @@ async function createSignedLink(){
 
 downloadBtn.addEventListener(
     "click",
-    () => {
+    function(){
 
         if(!downloadURL)
             return;
+
 
         window.open(
             downloadURL,
@@ -1082,15 +1221,16 @@ downloadBtn.addEventListener(
 
 
 /* =========================================
-   COPY SHARE LINK
+   COPY LINK
 ========================================= */
 
 shareBtn.addEventListener(
     "click",
-    async () => {
+    async function(){
 
         if(!downloadURL)
             return;
+
 
         try{
 
@@ -1098,11 +1238,13 @@ shareBtn.addEventListener(
                 downloadURL
             );
 
+
             shareBtn.textContent =
                 "✓ Link Copied";
 
+
             setTimeout(
-                () => {
+                function(){
 
                     shareBtn.textContent =
                         "🔗 Copy Link";
@@ -1111,10 +1253,11 @@ shareBtn.addEventListener(
                 2000
             );
 
+
         }catch(error){
 
             alert(
-                "Copy failed. Link:\n\n" +
+                "Copy failed.\n\n" +
                 downloadURL
             );
 
@@ -1125,44 +1268,4 @@ shareBtn.addEventListener(
 
 
 /* =========================================
-   CLEAR
-========================================= */
-
-clearBtn.addEventListener(
-    "click",
-    () => {
-
-        selectedFile = null;
-
-        uploadedPath = null;
-
-        downloadURL = null;
-
-        fileInput.value = "";
-
-        fileInfo.style.display =
-            "none";
-
-        progressBox.style.display =
-            "none";
-
-        hashBox.style.display =
-            "none";
-
-        linkBox.style.display =
-            "none";
-
-        progressBar.style.width =
-            "0%";
-
-        uploadBtn.disabled =
-            false;
-
-        downloadBtn.disabled =
-            true;
-
-        shareBtn.disabled =
-            true;
-
-    }
-);
+    
