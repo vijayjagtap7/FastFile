@@ -15,14 +15,14 @@
 }
 
 body{
-    font-family:Georgia,serif;
+    font-family:Arial,sans-serif;
     background:#070b14;
     color:#fff;
     min-height:100vh;
 }
 
 header{
-    padding:18px 6%;
+    padding:20px 6%;
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -30,12 +30,12 @@ header{
 }
 
 .logo{
-    font-size:26px;
-    font-weight:bold;
+    font-size:27px;
+    font-weight:800;
 }
 
 .logo span{
-    color:#8a5cff;
+    color:#7c5cff;
 }
 
 .badge{
@@ -48,18 +48,17 @@ header{
 
 .hero{
     text-align:center;
-    padding:45px 20px 25px;
+    padding:50px 20px 25px;
 }
 
 .hero h1{
-    font-size:clamp(38px,8vw,62px);
+    font-size:clamp(38px,8vw,65px);
     line-height:1.05;
     margin-bottom:18px;
-    font-style:italic;
 }
 
 .hero h1 span{
-    color:#8a5cff;
+    color:#7c5cff;
 }
 
 .hero p{
@@ -68,7 +67,6 @@ header{
     color:#9ba7bc;
     font-size:16px;
     line-height:1.7;
-    font-style:italic;
 }
 
 .container{
@@ -82,27 +80,26 @@ header{
     border-radius:24px;
     padding:45px 20px;
     text-align:center;
+    transition:.2s;
 }
 
 .upload.drag{
-    border-color:#8a5cff;
+    border-color:#7c5cff;
 }
 
 .upload-icon{
-    font-size:58px;
-    margin-bottom:18px;
+    font-size:55px;
+    margin-bottom:15px;
 }
 
 .upload h2{
-    font-size:25px;
-    margin-bottom:10px;
-    font-style:italic;
+    font-size:24px;
+    margin-bottom:9px;
 }
 
 .upload>p{
     color:#8f9ab0;
-    margin-bottom:23px;
-    font-style:italic;
+    margin-bottom:22px;
 }
 
 input[type=file]{
@@ -111,40 +108,38 @@ input[type=file]{
 
 .choose{
     display:inline-block;
-    background:linear-gradient(135deg,#7357ff,#a15cff);
-    padding:16px 30px;
-    border-radius:14px;
-    font-weight:bold;
+    background:linear-gradient(135deg,#7357ff,#9b5cff);
+    padding:15px 27px;
+    border-radius:13px;
+    font-weight:700;
     cursor:pointer;
-    font-style:italic;
 }
 
 #fileInfo{
     display:none;
-    margin-top:23px;
+    margin-top:22px;
     background:#101728;
-    border:1px solid #29354d;
-    border-radius:20px;
-    padding:20px;
+    border:1px solid #27334a;
+    border-radius:18px;
+    padding:18px;
     text-align:left;
 }
 
 .file-name{
-    font-size:18px;
-    font-weight:bold;
+    font-size:17px;
+    font-weight:700;
     word-break:break-word;
-    line-height:1.35;
 }
 
 .file-meta{
     color:#8995ab;
-    margin-top:8px;
-    font-size:14px;
+    margin-top:7px;
+    font-size:13px;
 }
 
 .progress-box{
     display:none;
-    margin-top:20px;
+    margin-top:18px;
 }
 
 .progress{
@@ -155,39 +150,40 @@ input[type=file]{
 }
 
 .progress-bar{
-    width:0%;
+    width:0;
     height:100%;
     background:linear-gradient(90deg,#7357ff,#a95cff);
-    transition:width .15s linear;
+    transition:.1s;
 }
 
 .status{
-    margin-top:10px;
-    color:#aeb9ce;
-    font-size:14px;
+    margin-top:9px;
+    color:#9ba7bc;
+    font-size:13px;
+    line-height:1.5;
 }
 
 .speed{
     margin-top:6px;
-    color:#7c8aa3;
-    font-size:13px;
+    color:#7c5cff;
+    font-size:14px;
+    font-weight:bold;
 }
 
 .actions{
     display:flex;
     flex-direction:column;
     gap:10px;
-    margin-top:20px;
+    margin-top:18px;
 }
 
 button{
     border:0;
     cursor:pointer;
     padding:14px 18px;
-    border-radius:12px;
-    font-weight:bold;
-    font-size:15px;
-    font-family:Georgia,serif;
+    border-radius:11px;
+    font-weight:700;
+    font-size:14px;
 }
 
 .uploadBtn{
@@ -207,7 +203,7 @@ button{
 
 .clear{
     background:#20293a;
-    color:#d0d7e5;
+    color:#cbd4e4;
 }
 
 button:disabled{
@@ -219,9 +215,9 @@ button:disabled{
 .hash{
     display:none;
     margin-top:16px;
-    padding:15px;
-    background:#090e19;
-    border-radius:13px;
+    padding:14px;
+    background:#0a0f1b;
+    border-radius:12px;
 }
 
 .linkTitle{
@@ -234,18 +230,12 @@ button:disabled{
     color:#9d8cff;
     font-size:12px;
     word-break:break-all;
-    line-height:1.5;
 }
 
 .hash{
-    font-size:12px;
+    font-size:11px;
     color:#8995ab;
     word-break:break-all;
-    line-height:1.5;
-}
-
-.hash b{
-    color:#b9c3d5;
 }
 
 .features{
@@ -263,21 +253,18 @@ button:disabled{
 }
 
 .card-icon{
-    font-size:30px;
-    margin-bottom:13px;
+    font-size:28px;
+    margin-bottom:12px;
 }
 
 .card h3{
     margin-bottom:8px;
-    font-size:20px;
-    font-style:italic;
 }
 
 .card p{
     color:#8995ab;
     font-size:14px;
-    line-height:1.6;
-    font-style:italic;
+    line-height:1.5;
 }
 
 footer{
@@ -286,7 +273,6 @@ footer{
     border-top:1px solid #20283a;
     color:#667188;
     font-size:13px;
-    font-style:italic;
 }
 
 @media(max-width:650px){
@@ -300,11 +286,7 @@ footer{
     }
 
     .hero{
-        padding-top:38px;
-    }
-
-    .upload{
-        padding:40px 15px;
+        padding-top:40px;
     }
 
 }
@@ -344,6 +326,7 @@ footer{
 
 <main class="container">
 
+
 <div class="upload" id="dropZone">
 
     <div class="upload-icon">
@@ -371,8 +354,6 @@ footer{
     </label>
 
 
-    <!-- FILE INFORMATION -->
-
     <div id="fileInfo">
 
         <div
@@ -385,8 +366,6 @@ footer{
             id="fileMeta">
         </div>
 
-
-        <!-- PROGRESS -->
 
         <div
             class="progress-box"
@@ -412,15 +391,13 @@ footer{
             <div
                 class="speed"
                 id="speed">
-                Speed: 0 MB/s
             </div>
 
         </div>
 
 
-        <!-- BUTTONS -->
-
         <div class="actions">
+
 
             <button
                 class="uploadBtn"
@@ -436,7 +413,7 @@ footer{
                 id="downloadBtn"
                 disabled>
 
-                ⬇ Download
+                ↓ Download Original
 
             </button>
 
@@ -459,10 +436,9 @@ footer{
 
             </button>
 
+
         </div>
 
-
-        <!-- LINK -->
 
         <div
             class="linkBox"
@@ -480,8 +456,6 @@ footer{
         </div>
 
 
-        <!-- HASH -->
-
         <div
             class="hash"
             id="hashBox">
@@ -489,19 +463,18 @@ footer{
             <b>SHA-256:</b>
 
             <span id="hash">
-                Calculating...
             </span>
 
         </div>
+
 
     </div>
 
 </div>
 
 
-<!-- FEATURES -->
-
 <div class="features">
+
 
     <div class="card">
 
@@ -514,7 +487,7 @@ footer{
         </h3>
 
         <p>
-            High-speed upload directly to FastFile storage.
+            High-speed resumable upload with live speed monitoring.
         </p>
 
     </div>
@@ -531,8 +504,7 @@ footer{
         </h3>
 
         <p>
-            Files are stored as original binary data with
-            SHA-256 verification.
+            Files are transferred directly to FastFile storage.
         </p>
 
     </div>
@@ -554,7 +526,9 @@ footer{
 
     </div>
 
+
 </div>
+
 
 </main>
 
@@ -566,15 +540,26 @@ footer{
 </footer>
 
 
+<!--
+    TUS CLIENT
+    Used for large/resumable uploads
+-->
+
+<script src="https://cdn.jsdelivr.net/npm/tus-js-client@4/dist/tus.min.js"></script>
+
 
 <script>
 
-/* =========================================
+
+/* =========================================================
    SUPABASE
-========================================= */
+========================================================= */
 
 const SUPABASE_URL =
 "https://mbayqqiyyryxopqqnlkr.supabase.co";
+
+const SUPABASE_PROJECT =
+"mbayqqiyyryxopqqnlkr";
 
 const SUPABASE_KEY =
 "sb_publishable_oktKMD_bqhXUZIBkMv65Rg_8iW2ZnhF";
@@ -583,9 +568,9 @@ const BUCKET =
 "fastfile";
 
 
-/* =========================================
+/* =========================================================
    ELEMENTS
-========================================= */
+========================================================= */
 
 const fileInput =
 document.getElementById("fileInput");
@@ -639,65 +624,144 @@ const hashText =
 document.getElementById("hash");
 
 
+/* =========================================================
+   VARIABLES
+========================================================= */
+
 let selectedFile = null;
+
 let downloadURL = null;
-let uploadedPath = null;
+
+let currentUpload = null;
+
+let uploadStartTime = 0;
+
+let lastUploaded = 0;
+
+let lastTime = 0;
 
 
-/* =========================================
+/* =========================================================
    FORMAT SIZE
-========================================= */
+========================================================= */
 
 function formatSize(bytes){
 
-    if(bytes < 1024)
+    if(bytes < 1024){
+
         return bytes + " B";
 
-    if(bytes < 1024 * 1024)
-        return (bytes / 1024).toFixed(2) + " KB";
+    }
 
-    if(bytes < 1024 * 1024 * 1024)
-        return (bytes / 1024 / 1024).toFixed(2) + " MB";
+    if(bytes < 1024 * 1024){
 
-    return (bytes / 1024 / 1024 / 1024).toFixed(2) + " GB";
+        return (
+            bytes / 1024
+        ).toFixed(2) + " KB";
+
+    }
+
+    if(bytes < 1024 * 1024 * 1024){
+
+        return (
+            bytes / 1024 / 1024
+        ).toFixed(2) + " MB";
+
+    }
+
+    return (
+        bytes / 1024 / 1024 / 1024
+    ).toFixed(2) + " GB";
 
 }
 
 
-/* =========================================
-   CREATE UNIQUE PATH
-========================================= */
+/* =========================================================
+   SPEED
+========================================================= */
+
+function formatSpeed(bytesPerSecond){
+
+    if(bytesPerSecond < 1024){
+
+        return (
+            bytesPerSecond.toFixed(0) +
+            " B/s"
+        );
+
+    }
+
+    if(bytesPerSecond < 1024 * 1024){
+
+        return (
+            bytesPerSecond / 1024
+        ).toFixed(2) +
+        " KB/s";
+
+    }
+
+    if(bytesPerSecond < 1024 * 1024 * 1024){
+
+        return (
+            bytesPerSecond / 1024 / 1024
+        ).toFixed(2) +
+        " MB/s";
+
+    }
+
+    return (
+        bytesPerSecond / 1024 / 1024 / 1024
+    ).toFixed(2) +
+    " GB/s";
+
+}
+
+
+/* =========================================================
+   FILE NAME
+========================================================= */
 
 function createFileName(file){
 
+    const original =
+        file.name;
+
+    const dot =
+        original.lastIndexOf(".");
+
     const extension =
-        file.name.includes(".")
-        ? "." + file.name.split(".").pop()
+        dot !== -1
+        ? original.substring(dot)
         : "";
 
-    return Date.now() +
+    return (
+        Date.now() +
         "-" +
         crypto.randomUUID() +
-        extension;
+        extension
+    );
 
 }
 
 
-/* =========================================
-   SHOW SELECTED FILE
-========================================= */
+/* =========================================================
+   SHOW FILE
+========================================================= */
 
 function showFile(file){
 
-    if(!file)
+    if(!file){
+
         return;
 
+    }
 
-    selectedFile = file;
 
-    downloadURL = null;
+    selectedFile =
+        file;
 
-    uploadedPath = null;
+    downloadURL =
+        null;
 
 
     fileName.textContent =
@@ -723,12 +787,12 @@ function showFile(file){
         "0%";
 
 
-    speedText.textContent =
-        "Speed: 0 MB/s";
-
-
     statusText.textContent =
-        "✓ File selected successfully";
+        "File selected successfully";
+
+
+    speedText.textContent =
+        "";
 
 
     linkBox.style.display =
@@ -753,11 +817,18 @@ function showFile(file){
 
     /*
        IMPORTANT:
-       Do not read multi-GB files into RAM.
-       SHA-256 is calculated only for smaller files.
+
+       Do NOT use file.arrayBuffer()
+       for multi-GB files.
+
+       It can consume huge amounts
+       of phone RAM.
+
+       SHA-256 is calculated only
+       for files <= 100 MB.
     */
 
-    if(file.size <= 200 * 1024 * 1024){
+    if(file.size <= 100 * 1024 * 1024){
 
         calculateHash(file);
 
@@ -767,78 +838,16 @@ function showFile(file){
             "block";
 
         hashText.textContent =
-            "Skipped for large file — upload will not load the whole file into RAM.";
+            "Skipped for large file";
 
     }
 
 }
 
 
-/* =========================================
-   FILE SELECT
-========================================= */
-
-fileInput.addEventListener(
-    "change",
-    function(){
-
-        if(this.files && this.files.length){
-
-            showFile(this.files[0]);
-
-        }
-
-    }
-);
-
-
-/* =========================================
-   DRAG & DROP
-========================================= */
-
-dropZone.addEventListener(
-    "dragover",
-    function(e){
-
-        e.preventDefault();
-
-        dropZone.classList.add("drag");
-
-    }
-);
-
-
-dropZone.addEventListener(
-    "dragleave",
-    function(){
-
-        dropZone.classList.remove("drag");
-
-    }
-);
-
-
-dropZone.addEventListener(
-    "drop",
-    function(e){
-
-        e.preventDefault();
-
-        dropZone.classList.remove("drag");
-
-        if(e.dataTransfer.files.length){
-
-            showFile(e.dataTransfer.files[0]);
-
-        }
-
-    }
-);
-
-
-/* =========================================
+/* =========================================================
    SHA-256
-========================================= */
+========================================================= */
 
 async function calculateHash(file){
 
@@ -862,26 +871,30 @@ async function calculateHash(file){
             );
 
 
-        const bytes =
-            new Uint8Array(digest);
+        const array =
+            Array.from(
+                new Uint8Array(digest)
+            );
 
 
-        let result = "";
-
-
-        for(const byte of bytes){
-
-            result +=
-                byte.toString(16).padStart(2,"0");
-
-        }
+        const hex =
+            array.map(
+                b =>
+                b.toString(16)
+                .padStart(2,"0")
+            ).join("");
 
 
         hashText.textContent =
-            result;
+            hex;
 
 
     }catch(error){
+
+        console.error(
+            "Hash error:",
+            error
+        );
 
         hashText.textContent =
             "Hash unavailable";
@@ -891,9 +904,95 @@ async function calculateHash(file){
 }
 
 
-/* =========================================
+/* =========================================================
+   FILE SELECT
+========================================================= */
+
+fileInput.addEventListener(
+    "change",
+    function(){
+
+        if(this.files &&
+           this.files.length){
+
+            showFile(
+                this.files[0]
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   DRAG OVER
+========================================================= */
+
+dropZone.addEventListener(
+    "dragover",
+    function(e){
+
+        e.preventDefault();
+
+        dropZone.classList.add(
+            "drag"
+        );
+
+    }
+);
+
+
+/* =========================================================
+   DRAG LEAVE
+========================================================= */
+
+dropZone.addEventListener(
+    "dragleave",
+    function(){
+
+        dropZone.classList.remove(
+            "drag"
+        );
+
+    }
+);
+
+
+/* =========================================================
+   DROP
+========================================================= */
+
+dropZone.addEventListener(
+    "drop",
+    function(e){
+
+        e.preventDefault();
+
+        dropZone.classList.remove(
+            "drag"
+        );
+
+
+        if(
+            e.dataTransfer &&
+            e.dataTransfer.files &&
+            e.dataTransfer.files.length
+        ){
+
+            showFile(
+                e.dataTransfer.files[0]
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
    UPLOAD BUTTON
-========================================= */
+========================================================= */
 
 uploadBtn.addEventListener(
     "click",
@@ -910,17 +1009,28 @@ uploadBtn.addEventListener(
         }
 
 
-        uploadFile();
+        startUpload();
 
     }
 );
 
 
-/* =========================================
-   UPLOAD FILE
-========================================= */
+/* =========================================================
+   START TUS UPLOAD
+========================================================= */
 
-function uploadFile(){
+function startUpload(){
+
+    if(!window.tus){
+
+        alert(
+            "Upload library load nahi hui. Internet connection check karo."
+        );
+
+        return;
+
+    }
+
 
     const file =
         selectedFile;
@@ -930,16 +1040,11 @@ function uploadFile(){
         createFileName(file);
 
 
-    const url =
-        SUPABASE_URL +
-        "/storage/v1/object/" +
-        BUCKET +
-        "/" +
-        encodeURIComponent(path);
-
-
-    uploadedPath =
-        path;
+    const endpoint =
+        "https://" +
+        SUPABASE_PROJECT +
+        ".storage.supabase.co" +
+        "/storage/v1/upload/resumable";
 
 
     progressBox.style.display =
@@ -970,155 +1075,80 @@ function uploadFile(){
         true;
 
 
-    const xhr =
-        new XMLHttpRequest();
+    uploadStartTime =
+        Date.now();
 
 
-    /*
-       PUT is used for direct binary upload.
-    */
-
-    xhr.open(
-        "PUT",
-        url,
-        true
-    );
+    lastUploaded =
+        0;
 
 
-    xhr.setRequestHeader(
-        "apikey",
-        SUPABASE_KEY
-    );
+    lastTime =
+        Date.now();
 
 
-    xhr.setRequestHeader(
-        "Authorization",
-        "Bearer " + SUPABASE_KEY
-    );
+    currentUpload =
+        new tus.Upload(
+            file,
+            {
+
+                endpoint:endpoint,
+
+                retryDelays:[
+                    0,
+                    1000,
+                    3000,
+                    5000,
+                    10000
+                ],
 
 
-    xhr.setRequestHeader(
-        "Content-Type",
-        file.type ||
-        "application/octet-stream"
-    );
+                chunkSize:
+                    6 * 1024 * 1024,
 
 
-    xhr.setRequestHeader(
-        "x-upsert",
-        "false"
-    );
+                headers:{
+
+                    Authorization:
+                        "Bearer " +
+                        SUPABASE_KEY
+
+                },
 
 
-    let lastLoaded = 0;
+                metadata:{
 
-    let lastTime =
-        performance.now();
+                    bucketName:
+                        BUCKET,
 
+                    objectName:
+                        path,
 
-    xhr.upload.onprogress =
-        function(e){
+                    contentType:
+                        file.type ||
+                        "application/octet-stream",
 
-            if(!e.lengthComputable)
-                return;
+                    cacheControl:
+                        "3600"
 
-
-            const percent =
-                (e.loaded / e.total) * 100;
-
-
-            progressBar.style.width =
-                percent.toFixed(1) + "%";
+                },
 
 
-            statusText.textContent =
-                "Uploading... " +
-                Math.floor(percent) +
-                "%";
+                onError:
+                function(error){
 
-
-            /*
-               LIVE SPEED
-            */
-
-            const now =
-                performance.now();
-
-
-            const elapsed =
-                (now - lastTime) / 1000;
-
-
-            if(elapsed >= 0.5){
-
-                const bytes =
-                    e.loaded - lastLoaded;
-
-
-                const mbps =
-                    bytes /
-                    elapsed /
-                    1024 /
-                    1024;
-
-
-                speedText.textContent =
-                    "Speed: " +
-                    mbps.toFixed(2) +
-                    " MB/s";
-
-
-                lastLoaded =
-                    e.loaded;
-
-
-                lastTime =
-                    now;
-
-            }
-
-        };
-
-
-    xhr.onload =
-        async function(){
-
-            console.log(
-                "UPLOAD:",
-                xhr.status,
-                xhr.responseText
-            );
-
-
-            if(
-                xhr.status >= 200 &&
-                xhr.status < 300
-            ){
-
-                progressBar.style.width =
-                    "100%";
-
-
-                statusText.textContent =
-                    "Upload complete ✓ Creating link...";
-
-
-                speedText.textContent =
-                    "Upload finished";
-
-
-                try{
-
-                    await createDownloadLink(path);
-
-
-                }catch(error){
-
-                    console.error(error);
+                    console.error(
+                        "TUS ERROR:",
+                        error
+                    );
 
 
                     statusText.textContent =
-                        "Upload complete, but link failed";
+                        "Upload failed";
+
+
+                    speedText.textContent =
+                        "";
 
 
                     uploadBtn.disabled =
@@ -1126,188 +1156,110 @@ function uploadFile(){
 
 
                     alert(
-                        "File upload ho gaya, lekin download link nahi bana.\n\n" +
-                        error.message
+                        "UPLOAD FAILED\n\n" +
+                        (
+                            error.message ||
+                            "Unknown upload error"
+                        )
                     );
 
-                }
-
-
-            }else{
-
-                let message =
-                    xhr.responseText;
-
-
-                try{
-
-                    const data =
-                        JSON.parse(
-                            xhr.responseText
-                        );
-
-
-                    message =
-                        data.message ||
-                        data.error ||
-                        data.error_description ||
-                        message;
-
-                }catch(e){}
-
-
-                statusText.textContent =
-                    "Upload failed";
-
-
-                uploadBtn.disabled =
-                    false;
-
-
-                alert(
-                    "UPLOAD FAILED\n\n" +
-                    message +
-                    "\n\nHTTP: " +
-                    xhr.status
-                );
-
-            }
-
-        };
-
-
-    xhr.onerror =
-        function(){
-
-            statusText.textContent =
-                "Network error";
-
-
-            uploadBtn.disabled =
-                false;
-
-
-            alert(
-                "Network error.\n\nInternet connection check karo."
-            );
-
-        };
-
-
-    xhr.onabort =
-        function(){
-
-            statusText.textContent =
-                "Upload cancelled";
-
-
-            uploadBtn.disabled =
-                false;
-
-        };
-
-
-    /*
-       SEND ORIGINAL BINARY FILE
-    */
-
-    xhr.send(file);
-
-}
-
-
-/* =========================================
-   CREATE SIGNED DOWNLOAD LINK
-========================================= */
-
-async function createDownloadLink(path){
-
-    /*
-       Sign exactly this uploaded file.
-    */
-
-    const signURL =
-        SUPABASE_URL +
-        "/storage/v1/object/sign/" +
-        BUCKET +
-        "/" +
-        encodeURIComponent(path);
-
-
-    const response =
-        await fetch(
-            signURL,
-            {
-                method:"POST",
-
-                headers:{
-                    "apikey":
-                        SUPABASE_KEY,
-
-                    "Authorization":
-                        "Bearer " +
-                        SUPABASE_KEY,
-
-                    "Content-Type":
-                        "application/json"
                 },
 
-                body:JSON.stringify({
-                    expiresIn:86400
-                })
-            }
-        );
+
+                onProgress:
+                function(
+                    bytesUploaded,
+                    bytesTotal
+                ){
+
+                    const percent =
+                        (
+                            bytesUploaded /
+                            bytesTotal
+                        ) * 100;
 
 
-    const text =
-        await response.text();
+                    progressBar.style.width =
+                        percent.toFixed(1) +
+                        "%";
 
 
-    console.log(
-        "SIGN:",
-        response.status,
-        text
-    );
+                    const now =
+                        Date.now();
 
 
-    if(!response.ok){
-
-        let errorMessage =
-            text;
-
-
-        try{
-
-            const data =
-                JSON.parse(text);
+                    const elapsed =
+                        (
+                            now -
+                            uploadStartTime
+                        ) / 1000;
 
 
-            errorMessage =
-                data.message ||
-                data.error ||
-                data.error_description ||
-                text;
-
-        }catch(e){}
+                    const instantBytes =
+                        bytesUploaded -
+                        lastUploaded;
 
 
-        throw new Error(
-            errorMessage
-        );
-
-    }
-
-
-    let data;
+                    const instantTime =
+                        (
+                            now -
+                            lastTime
+                        ) / 1000;
 
 
-    try{
+                    let speed =
+                        0;
 
-        data =
-            JSON.parse(text);
 
-    }catch(error){
+                    if(
+                        instantTime > 0
+                    ){
 
-        throw new Error(
-            "Invalid Supabase response."
-        
+                        speed =
+                            instantBytes /
+                            instantTime;
+
+                    }
+
+
+                    if(
+                        speed <= 0 &&
+                        elapsed > 0
+                    ){
+
+                        speed =
+                            bytesUploaded /
+                            elapsed;
+
+                    }
+
+
+                    speedText.textContent =
+                        "Speed: " +
+                        formatSpeed(speed);
+
+
+                    statusText.textContent =
+                        "Uploading... " +
+                        percent.toFixed(1) +
+                        "% • " +
+                        formatSize(bytesUploaded) +
+                        " / " +
+                        formatSize(bytesTotal);
+
+
+                    lastUploaded =
+                        bytesUploaded;
+
+
+                    lastTime =
+                        now;
+
+                },
+
+
+                onSuccess:
+                async function(){
+
+                    progressBar.style.width =
+                        "100%";
