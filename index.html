@@ -1263,3 +1263,446 @@ function startUpload(){
 
                     progressBar.style.width =
                         "100%";
+
+
+                    statusText.textContent =
+                        "Upload complete ✓ Creating link...";
+
+
+                    speedText.textContent =
+                        "Upload completed";
+
+
+                    try{
+
+                        await createDownloadLink(
+                            path
+                        );
+
+
+                    }catch(error){
+
+                        console.error(
+                            "LINK ERROR:",
+                            error
+                        );
+
+
+                        statusText.textContent =
+                            "Upload complete, link failed";
+
+
+                        uploadBtn.disabled =
+                            false;
+
+
+                        alert(
+                            "File upload ho gaya, lekin download link nahi bana.\n\n" +
+                            error.message
+                        );
+
+                    }
+
+                }
+
+            }
+        );
+
+
+    /*
+       Try to find an interrupted upload.
+    */
+
+    currentUpload
+        .findPreviousUploads()
+        .then(
+            function(previousUploads){
+
+                if(
+                    previousUploads &&
+                    previousUploads.length
+                ){
+
+                    currentUpload.resumeFromPreviousUpload(
+                        previousUploads[0]
+                    );
+
+                    statusText.textContent =
+                        "Resuming previous upload...";
+
+                }
+
+
+                currentUpload.start();
+
+            }
+        )
+        .catch(
+            function(error){
+
+                console.error(
+                    error
+                );
+
+                currentUpload.start();
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   CREATE SIGNED DOWNLOAD LINK
+========================================================= */
+
+async function createDownloadLink(path){
+
+    const url =
+        SUPABASE_URL +
+        "/storage/v1/object/sign/" +
+        BUCKET;
+
+
+    const response =
+        await fetch(
+            url,
+            {
+
+                method:"POST",
+
+                headers:{
+
+                    apikey:
+                        SUPABASE_KEY,
+
+                    Authorization:
+                        "Bearer " +
+                        SUPABASE_KEY,
+
+                    "Content-Type":
+                        "application/json"
+
+                },
+
+
+                body:
+                JSON.stringify({
+
+                    paths:[
+                        path
+                    ],
+
+                    expiresIn:
+                        86400
+
+                })
+
+            }
+        );
+
+
+    const text =
+        await response.text();
+
+
+    console.log(
+        "SIGN RESPONSE:",
+        response.status,
+        text
+    );
+
+
+    let data;
+
+
+    try{
+
+        data =
+            JSON.parse(text);
+
+    }catch(error){
+
+        throw new Error(
+            text ||
+            "Invalid Supabase response"
+        );
+
+    }
+
+
+    if(!response.ok){
+
+        throw new Error(
+            data.message ||
+            data.error ||
+            data.error_description ||
+            "Could not create download link"
+        );
+
+    }
+
+
+    let signedURL =
+        null;
+
+
+    if(
+        Array.isArray(data) &&
+        data[0]
+    ){
+
+        signedURL =
+            data[0].signedURL ||
+            data[0].signedUrl;
+
+    }
+
+
+    if(
+        !signedURL &&
+        data.signedURL
+    ){
+
+        signedURL =
+            data.signedURL;
+
+    }
+
+
+    if(
+        !signedURL &&
+        data.signedUrl
+    ){
+
+        signedURL =
+            data.signedUrl;
+
+    }
+
+
+    if(!signedURL){
+
+        throw new Error(
+            "Supabase ne signed URL return nahi kiya."
+        );
+
+    }
+
+
+    if(
+        signedURL.startsWith("http")
+    ){
+
+        downloadURL =
+            signedURL;
+
+    }else{
+
+        downloadURL =
+            SUPABASE_URL +
+            "/storage/v1" +
+            signedURL;
+
+    }
+
+
+    downloadURL +=
+        (
+            downloadURL.includes("?")
+            ? "&"
+            : "?"
+        ) +
+        "download=" +
+        encodeURIComponent(
+            selectedFile.name
+        );
+
+
+    fileLink.textContent =
+        downloadURL;
+
+
+    linkBox.style.display =
+        "block";
+
+
+    downloadBtn.disabled =
+        false;
+
+
+    shareBtn.disabled =
+        false;
+
+
+    statusText.textContent =
+        "File ready ✓";
+
+
+    speedText.textContent =
+        "Ready to download";
+
+}
+
+
+/* =========================================================
+   DOWNLOAD
+========================================================= */
+
+downloadBtn.addEventListener(
+    "click",
+    function(){
+
+        if(!downloadURL){
+
+            return;
+
+        }
+
+
+        window.open(
+            downloadURL,
+            "_blank"
+        );
+
+    }
+);
+
+
+/* =========================================================
+   COPY LINK
+========================================================= */
+
+shareBtn.addEventListener(
+    "click",
+    async function(){
+
+        if(!downloadURL){
+
+            return;
+
+        }
+
+
+        try{
+
+            await navigator.clipboard.writeText(
+                downloadURL
+            );
+
+
+            shareBtn.textContent =
+                "✓ Link Copied";
+
+
+            setTimeout(
+                function(){
+
+                    shareBtn.textContent =
+                        "🔗 Copy Link";
+
+                },
+                2000
+            );
+
+
+        }catch(error){
+
+            alert(
+                "Link:\n\n" +
+                downloadURL
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   REMOVE
+========================================================= */
+
+clearBtn.addEventListener(
+    "click",
+    function(){
+
+        /*
+           Stop active upload
+        */
+
+        if(currentUpload){
+
+            try{
+
+                currentUpload.abort();
+
+            }catch(error){
+
+                console.log(
+                    error
+                );
+
+            }
+
+        }
+
+
+        currentUpload =
+            null;
+
+
+        selectedFile =
+            null;
+
+
+        downloadURL =
+            null;
+
+
+        fileInput.value =
+            "";
+
+
+        fileInfo.style.display =
+            "none";
+
+
+        progressBox.style.display =
+            "none";
+
+
+        linkBox.style.display =
+            "none";
+
+
+        hashBox.style.display =
+            "none";
+
+
+        progressBar.style.width =
+            "0%";
+
+
+        speedText.textContent =
+            "";
+
+
+        uploadBtn.disabled =
+            false;
+
+
+        downloadBtn.disabled =
+            true;
+
+
+        shareBtn.disabled =
+            true;
+
+    }
+);
+
+</script>
+
+</body>
+</html>
