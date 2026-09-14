@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="FastFile - Secure high speed file transfer">
+<title>FastFile — Secure File Transfer</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:Arial,sans-serif;
+background:#070b14;
+color:#fff;
+min-height:100vh;
+}
+
+header{
+padding:22px 7%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:1px solid #20283a;
+}
+
+.logo{
+font-size:28px;
+font-weight:800;
+letter-spacing:-1px;
+}
+
+.logo span{color:#7c5cff}
+
+.badge{
+padding:8px 14px;
+border:1px solid #29334a;
+border-radius:30px;
+color:#aeb9ce;
+font-size:13px;
+}
+
+.hero{
+text-align:center;
+padding:55px 20px 30px;
+}
+
+.hero h1{
+font-size:clamp(38px,8vw,68px);
+line-height:1;
+margin-bottom:18px;
+}
+
+.hero h1 span{
+color:#7c5cff;
+}
+
+.hero p{
+max-width:650px;
+margin:auto;
+color:#9ba7bc;
+font-size:17px;
+line-height:1.6;
+}
+
+.container{
+width:min(900px,92%);
+margin:30px auto 70px;
+}
+
+.upload{
+border:2px dashed #38435c;
+background:linear-gradient(145deg,#101729,#0b101e);
+border-radius:24px;
+padding:55px 25px;
+text-align:center;
+transition:.2s;
+}
+
+.upload.drag{
+border-color:#7c5cff;
+background:#11172a;
+}
+
+.upload-icon{
+font-size:58px;
+margin-bottom:18px;
+}
+
+.upload h2{
+font-size:25px;
+margin-bottom:10px;
+}
+
+.upload p{
+color:#8f9ab0;
+margin-bottom:25px;
+}
+
+input[type=file]{display:none}
+
+.choose{
+display:inline-block;
+background:linear-gradient(135deg,#7357ff,#9b5cff);
+padding:15px 28px;
+border-radius:13px;
+font-weight:700;
+cursor:pointer;
+box-shadow:0 10px 30px #6e50ff33;
+}
+
+#fileInfo{
+display:none;
+margin-top:22px;
+background:#101728;
+border:1px solid #27334a;
+border-radius:18px;
+padding:20px;
+}
+
+.file-name{
+font-size:18px;
+font-weight:700;
+word-break:break-word;
+}
+
+.file-meta{
+color:#8995ab;
+margin-top:7px;
+font-size:14px;
+}
+
+.progress-box{
+display:none;
+margin-top:20px;
+}
+
+.progress{
+height:10px;
+background:#20293b;
+border-radius:20px;
+overflow:hidden;
+}
+
+.progress-bar{
+width:0%;
+height:100%;
+background:linear-gradient(90deg,#7357ff,#a95cff);
+transition:width .2s;
+}
+
+.status{
+margin-top:9px;
+font-size:13px;
+color:#9ba7bc;
+}
+
+.actions{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:18px;
+}
+
+button{
+border:0;
+cursor:pointer;
+padding:13px 20px;
+border-radius:11px;
+font-weight:700;
+}
+
+.download{
+background:#7357ff;
+color:white;
+}
+
+.clear{
+background:#20293a;
+color:#cbd4e4;
+}
+
+.hash{
+display:none;
+margin-top:18px;
+padding:15px;
+background:#0a0f1b;
+border-radius:12px;
+font-size:12px;
+color:#8995ab;
+word-break:break-all;
+}
+
+.features{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+margin-top:25px;
+}
+
+.card{
+background:#101728;
+border:1px solid #222d42;
+border-radius:18px;
+padding:22px;
+}
+
+.card-icon{
+font-size:27px;
+margin-bottom:12px;
+}
+
+.card h3{
+margin-bottom:8px;
+}
+
+.card p{
+color:#8995ab;
+font-size:14px;
+line-height:1.5;
+}
+
+footer{
+text-align:center;
+padding:25px;
+border-top:1px solid #20283a;
+color:#667188;
+font-size:13px;
+}
+
+@media(max-width:650px){
+header{padding:18px 5%}
+.badge{display:none}
+
+.hero{
+padding-top:40px;
+}
+
+.upload{
+padding:40px 18px;
+}
+
+.features{
+grid-template-columns:1fr;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">⚡ Fast<span>File</span></div>
+<div class="badge">🔒 Secure Transfer</div>
+</header>
+
+<section class="hero">
+<h1>Send Files.<br><span>Fast & Secure.</span></h1>
+<p>
+Transfer images, videos, PDFs, ZIP files and other files
+without changing their original quality.
+</p>
+</section>
+
+<main class="container">
+
+<div class="upload" id="dropZone">
+
+<div class="upload-icon">☁️</div>
+
+<h2>Drop your file here</h2>
+
+<p>or choose a file from your device</p>
+
+<label class="choose">
+Choose File
+<input type="file" id="fileInput">
+</label>
+
+<div id="fileInfo">
+
+<div class="file-name" id="fileName"></div>
+<div class="file-meta" id="fileMeta"></div>
+
+<div class="progress-box" id="progressBox">
+<div class="progress">
+<div class="progress-bar" id="progressBar"></div>
+</div>
+<div class="status" id="status">Preparing...</div>
+</div>
+
+<div class="actions">
+<button class="download" id="downloadBtn">
+⬇ Download Original
+</button>
+
+<button class="clear" id="clearBtn">
+✕ Remove
+</button>
+</div>
+
+<div class="hash" id="hashBox">
+<strong>SHA-256:</strong>
+<span id="hash"></span>
+</div>
+
+</div>
+
+</div>
+
+<div class="features">
+
+<div class="card">
+<div class="card-icon">⚡</div>
+<h3>Fast</h3>
+<p>Designed for high-speed file transfer with minimal processing.</p>
+</div>
+
+<div class="card">
+<div class="card-icon">🔒</div>
+<h3>Secure</h3>
+<p>Files are kept as original binary data. SHA-256 verification is included.</p>
+</div>
+
+<div class="card">
+<div class="card-icon">📦</div>
+<h3>Any File</h3>
+<p>Images, videos, PDFs, ZIPs, APKs and other file types can be selected.</p>
+</div>
+
+</div>
+
+</main>
+
+<footer>
+© 2026 FastFile — Secure File Transfer
+</footer>
+
+<script>
+const fileInput = document.getElementById("fileInput");
+const dropZone = document.getElementById("dropZone");
+const fileInfo = document.getElementById("fileInfo");
+const fileName = document.getElementById("fileName");
+const fileMeta = document.getElementById("fileMeta");
+const downloadBtn = document.getElementById("downloadBtn");
+const clearBtn = document.getElementById("clearBtn");
+const hashBox = document.getElementById("hashBox");
+const hashText = document.getElementById("hash");
+const progressBox = document.getElementById("progressBox");
+const progressBar = document.getElementById("progressBar");
+const statusText = document.getElementById("status");
+
+let selectedFile = null;
+let downloadURL = null;
+
+function formatSize(bytes){
+    if(bytes < 1024) return bytes + " B";
+    if(bytes < 1024*1024)
+        return (bytes/1024).toFixed(2) + " KB";
+    if(bytes < 1024*1024*1024)
+        return (bytes/1024/1024).toFixed(2) + " MB";
+    return (bytes/1024/1024/1024).toFixed(2) + " GB";
+}
+
+async function calculateHash(file){
+
+    hashBox.style.display = "block";
+    hashText.textContent = "Calculating...";
+
+    const buffer = await file.arrayBuffer();
+
+    const digest = await crypto.subtle.digest(
+        "SHA-256",
+        buffer
+    );
+
+    const hashArray = Array.from(new Uint8Array(digest));
+
+    const hashHex = hashArray
+        .map(b => b.toString(16).padStart(2,"0"))
+        .join("");
+
+    hashText.textContent = hashHex;
+}
+
+function showFile(file){
+
+    selectedFile = file;
+
+    fileName.textContent = file.name;
+
+    fileMeta.textContent =
+        "Type: " + (file.type || "Unknown") +
+        " • Size: " + formatSize(file.size);
+
+    fileInfo.style.display = "block";
+
+    progressBox.style.display = "block";
+    progressBar.style.width = "100%";
+    statusText.textContent =
+        "File ready — original data preserved";
+
+    if(downloadURL){
+        URL.revokeObjectURL(downloadURL);
+    }
+
+    downloadURL = URL.createObjectURL(file);
+
+    calculateHash(file);
+}
+
+fileInput.addEventListener("change", e => {
+
+    if(e.target.files.length){
+        showFile(e.target.files[0]);
+    }
+
+});
+
+["dragenter","dragover"].forEach(event => {
+
+    dropZone.addEventListener(event, e => {
+        e.preventDefault();
+        dropZone.classList.add("drag");
+    });
+
+});
+
+["dragleave","drop"].forEach(event => {
+
+    dropZone.addEventListener(event, e => {
+        e.preventDefault();
+        dropZone.classList.remove("drag");
+    });
+
+});
+
+dropZone.addEventListener("drop", e => {
+
+    const files = e.dataTransfer.files;
+
+    if(files.length){
+        showFile(files[0]);
+    }
+
+});
+
+downloadBtn.addEventListener("click", () => {
+
+    if(!selectedFile || !downloadURL) return;
+
+    const a = document.createElement("a");
+
+    a.href = downloadURL;
+    a.download = selectedFile.name;
+
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+});
+
+clearBtn.addEventListener("click", () => {
+
+    selectedFile = null;
+
+    if(downloadURL){
+        URL.revokeObjectURL(downloadURL);
+        downloadURL = null;
+    }
+
+    fileInput.value = "";
+
+    fileInfo.style.display = "none";
+    progressBox.style.display = "none";
+    hashBox.style.display = "none";
+
+});
+</script>
+
+</body>
+</html>
