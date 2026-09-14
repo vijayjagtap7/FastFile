@@ -3,16 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>FastFile — Secure File Transfer</title>
 
 <style>
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
     font-family:Arial,sans-serif;
@@ -34,9 +28,7 @@ header{
     font-weight:800;
 }
 
-.logo span{
-    color:#7c5cff;
-}
+.logo span{color:#7c5cff}
 
 .badge{
     padding:8px 13px;
@@ -57,9 +49,7 @@ header{
     margin-bottom:18px;
 }
 
-.hero h1 span{
-    color:#7c5cff;
-}
+.hero h1 span{color:#7c5cff}
 
 .hero p{
     max-width:650px;
@@ -80,7 +70,6 @@ header{
     border-radius:24px;
     padding:45px 20px;
     text-align:center;
-    transition:.2s;
 }
 
 .upload.drag{
@@ -102,9 +91,7 @@ header{
     margin-bottom:22px;
 }
 
-input[type=file]{
-    display:none;
-}
+input[type=file]{display:none}
 
 .choose{
     display:inline-block;
@@ -143,7 +130,7 @@ input[type=file]{
 }
 
 .progress{
-    height:10px;
+    height:9px;
     background:#20293b;
     border-radius:20px;
     overflow:hidden;
@@ -153,21 +140,13 @@ input[type=file]{
     width:0;
     height:100%;
     background:linear-gradient(90deg,#7357ff,#a95cff);
-    transition:.1s;
+    transition:.15s;
 }
 
 .status{
     margin-top:9px;
     color:#9ba7bc;
     font-size:13px;
-    line-height:1.5;
-}
-
-.speed{
-    margin-top:6px;
-    color:#7c5cff;
-    font-size:14px;
-    font-weight:bold;
 }
 
 .actions{
@@ -180,7 +159,7 @@ input[type=file]{
 button{
     border:0;
     cursor:pointer;
-    padding:14px 18px;
+    padding:13px 18px;
     border-radius:11px;
     font-weight:700;
     font-size:14px;
@@ -211,8 +190,7 @@ button:disabled{
     cursor:not-allowed;
 }
 
-.linkBox,
-.hash{
+.linkBox,.hash{
     display:none;
     margin-top:16px;
     padding:14px;
@@ -257,9 +235,7 @@ button:disabled{
     margin-bottom:12px;
 }
 
-.card h3{
-    margin-bottom:8px;
-}
+.card h3{margin-bottom:8px}
 
 .card p{
     color:#8995ab;
@@ -276,10 +252,7 @@ footer{
 }
 
 @media(max-width:650px){
-
-    .badge{
-        display:none;
-    }
+    .badge{display:none}
 
     .features{
         grid-template-columns:1fr;
@@ -288,485 +261,245 @@ footer{
     .hero{
         padding-top:40px;
     }
-
 }
-
 </style>
 </head>
 
 <body>
 
 <header>
-
-    <div class="logo">
-        ⚡ Fast<span>File</span>
-    </div>
-
-    <div class="badge">
-        🔒 Secure Transfer
-    </div>
-
+    <div class="logo">⚡ Fast<span>File</span></div>
+    <div class="badge">🔒 Secure Transfer</div>
 </header>
 
-
 <section class="hero">
-
-    <h1>
-        Send Files.<br>
-        <span>Fast & Secure.</span>
-    </h1>
+    <h1>Send Files.<br><span>Fast & Secure.</span></h1>
 
     <p>
         Transfer images, videos, PDFs, ZIP files and other files
         without changing their original quality.
     </p>
-
 </section>
-
 
 <main class="container">
 
-
 <div class="upload" id="dropZone">
 
-    <div class="upload-icon">
-        ☁️
-    </div>
+    <div class="upload-icon">☁️</div>
 
-    <h2>
-        Drop your file here
-    </h2>
+    <h2>Drop your file here</h2>
 
-    <p>
-        or choose a file from your device
-    </p>
-
+    <p>or choose a file from your device</p>
 
     <label class="choose">
-
         Choose File
-
-        <input
-            type="file"
-            id="fileInput"
-        >
-
+        <input type="file" id="fileInput">
     </label>
-
 
     <div id="fileInfo">
 
-        <div
-            class="file-name"
-            id="fileName">
-        </div>
+        <div class="file-name" id="fileName"></div>
+        <div class="file-meta" id="fileMeta"></div>
 
-        <div
-            class="file-meta"
-            id="fileMeta">
-        </div>
-
-
-        <div
-            class="progress-box"
-            id="progressBox">
+        <div class="progress-box" id="progressBox">
 
             <div class="progress">
-
-                <div
-                    class="progress-bar"
-                    id="progressBar">
-                </div>
-
+                <div class="progress-bar" id="progressBar"></div>
             </div>
 
-
-            <div
-                class="status"
-                id="status">
+            <div class="status" id="status">
                 Ready
             </div>
 
-
-            <div
-                class="speed"
-                id="speed">
-            </div>
-
         </div>
-
 
         <div class="actions">
 
-
-            <button
-                class="uploadBtn"
-                id="uploadBtn">
-
+            <button class="uploadBtn" id="uploadBtn">
                 ⬆ Upload to FastFile
-
             </button>
 
-
-            <button
-                class="download"
-                id="downloadBtn"
-                disabled>
-
-                ↓ Download Original
-
+            <button class="download" id="downloadBtn" disabled>
+                ⬇ Download
             </button>
 
-
-            <button
-                class="share"
-                id="shareBtn"
-                disabled>
-
+            <button class="share" id="shareBtn" disabled>
                 🔗 Copy Link
-
             </button>
 
-
-            <button
-                class="clear"
-                id="clearBtn">
-
+            <button class="clear" id="clearBtn">
                 ✕ Remove
-
             </button>
 
-
         </div>
 
-
-        <div
-            class="linkBox"
-            id="linkBox">
-
-            <div class="linkTitle">
-                Shareable download link
-            </div>
-
-            <div
-                class="link"
-                id="fileLink">
-            </div>
-
+        <div class="linkBox" id="linkBox">
+            <div class="linkTitle">Shareable download link</div>
+            <div class="link" id="fileLink"></div>
         </div>
 
-
-        <div
-            class="hash"
-            id="hashBox">
-
+        <div class="hash" id="hashBox">
             <b>SHA-256:</b>
-
-            <span id="hash">
-            </span>
-
+            <span id="hash"></span>
         </div>
-
 
     </div>
 
 </div>
-
 
 <div class="features">
 
-
     <div class="card">
-
-        <div class="card-icon">
-            ⚡
-        </div>
-
-        <h3>
-            Fast
-        </h3>
-
-        <p>
-            High-speed resumable upload with live speed monitoring.
-        </p>
-
+        <div class="card-icon">⚡</div>
+        <h3>Fast</h3>
+        <p>High-speed upload directly to FastFile storage.</p>
     </div>
 
-
     <div class="card">
-
-        <div class="card-icon">
-            🔒
-        </div>
-
-        <h3>
-            Secure
-        </h3>
-
-        <p>
-            Files are transferred directly to FastFile storage.
-        </p>
-
+        <div class="card-icon">🔒</div>
+        <h3>Secure</h3>
+        <p>Files are stored as original binary data with SHA-256 verification.</p>
     </div>
 
-
     <div class="card">
-
-        <div class="card-icon">
-            📦
-        </div>
-
-        <h3>
-            Any File
-        </h3>
-
-        <p>
-            Images, videos, PDFs, ZIPs and other file types.
-        </p>
-
+        <div class="card-icon">📦</div>
+        <h3>Any File</h3>
+        <p>Images, videos, PDFs, ZIPs and other file types.</p>
     </div>
-
 
 </div>
 
-
 </main>
 
-
 <footer>
-
     © 2026 FastFile — Secure File Transfer
-
 </footer>
-
-
-<!--
-    TUS CLIENT
-    Used for large/resumable uploads
--->
-
-<script src="https://cdn.jsdelivr.net/npm/tus-js-client@4/dist/tus.min.js"></script>
-
 
 <script>
 
-
-/* =========================================================
+/* ================================
    SUPABASE
-========================================================= */
+================================ */
 
 const SUPABASE_URL =
 "https://mbayqqiyyryxopqqnlkr.supabase.co";
 
-const SUPABASE_PROJECT =
-"mbayqqiyyryxopqqnlkr";
-
 const SUPABASE_KEY =
 "sb_publishable_oktKMD_bqhXUZIBkMv65Rg_8iW2ZnhF";
 
-const BUCKET =
-"fastfile";
+const BUCKET = "fastfile";
 
 
-/* =========================================================
+/* ================================
    ELEMENTS
-========================================================= */
+================================ */
 
-const fileInput =
-document.getElementById("fileInput");
+const fileInput = document.getElementById("fileInput");
+const dropZone = document.getElementById("dropZone");
 
-const dropZone =
-document.getElementById("dropZone");
+const fileInfo = document.getElementById("fileInfo");
+const fileName = document.getElementById("fileName");
+const fileMeta = document.getElementById("fileMeta");
 
-const fileInfo =
-document.getElementById("fileInfo");
+const uploadBtn = document.getElementById("uploadBtn");
+const downloadBtn = document.getElementById("downloadBtn");
+const shareBtn = document.getElementById("shareBtn");
+const clearBtn = document.getElementById("clearBtn");
 
-const fileName =
-document.getElementById("fileName");
+const progressBox = document.getElementById("progressBox");
+const progressBar = document.getElementById("progressBar");
+const statusText = document.getElementById("status");
 
-const fileMeta =
-document.getElementById("fileMeta");
+const linkBox = document.getElementById("linkBox");
+const fileLink = document.getElementById("fileLink");
 
-const uploadBtn =
-document.getElementById("uploadBtn");
+const hashBox = document.getElementById("hashBox");
+const hashText = document.getElementById("hash");
 
-const downloadBtn =
-document.getElementById("downloadBtn");
-
-const shareBtn =
-document.getElementById("shareBtn");
-
-const clearBtn =
-document.getElementById("clearBtn");
-
-const progressBox =
-document.getElementById("progressBox");
-
-const progressBar =
-document.getElementById("progressBar");
-
-const statusText =
-document.getElementById("status");
-
-const speedText =
-document.getElementById("speed");
-
-const linkBox =
-document.getElementById("linkBox");
-
-const fileLink =
-document.getElementById("fileLink");
-
-const hashBox =
-document.getElementById("hashBox");
-
-const hashText =
-document.getElementById("hash");
-
-
-/* =========================================================
-   VARIABLES
-========================================================= */
 
 let selectedFile = null;
-
 let downloadURL = null;
 
-let currentUpload = null;
 
-let uploadStartTime = 0;
-
-let lastUploaded = 0;
-
-let lastTime = 0;
-
-
-/* =========================================================
-   FORMAT SIZE
-========================================================= */
+/* ================================
+   FILE SIZE
+================================ */
 
 function formatSize(bytes){
 
-    if(bytes < 1024){
-
+    if(bytes < 1024)
         return bytes + " B";
 
-    }
+    if(bytes < 1024 * 1024)
+        return (bytes / 1024).toFixed(2) + " KB";
 
-    if(bytes < 1024 * 1024){
+    if(bytes < 1024 * 1024 * 1024)
+        return (bytes / 1024 / 1024).toFixed(2) + " MB";
 
-        return (
-            bytes / 1024
-        ).toFixed(2) + " KB";
-
-    }
-
-    if(bytes < 1024 * 1024 * 1024){
-
-        return (
-            bytes / 1024 / 1024
-        ).toFixed(2) + " MB";
-
-    }
-
-    return (
-        bytes / 1024 / 1024 / 1024
-    ).toFixed(2) + " GB";
-
+    return (bytes / 1024 / 1024 / 1024).toFixed(2) + " GB";
 }
 
 
-/* =========================================================
-   SPEED
-========================================================= */
-
-function formatSpeed(bytesPerSecond){
-
-    if(bytesPerSecond < 1024){
-
-        return (
-            bytesPerSecond.toFixed(0) +
-            " B/s"
-        );
-
-    }
-
-    if(bytesPerSecond < 1024 * 1024){
-
-        return (
-            bytesPerSecond / 1024
-        ).toFixed(2) +
-        " KB/s";
-
-    }
-
-    if(bytesPerSecond < 1024 * 1024 * 1024){
-
-        return (
-            bytesPerSecond / 1024 / 1024
-        ).toFixed(2) +
-        " MB/s";
-
-    }
-
-    return (
-        bytesPerSecond / 1024 / 1024 / 1024
-    ).toFixed(2) +
-    " GB/s";
-
-}
-
-
-/* =========================================================
-   FILE NAME
-========================================================= */
+/* ================================
+   RANDOM FILE NAME
+================================ */
 
 function createFileName(file){
 
-    const original =
-        file.name;
-
-    const dot =
-        original.lastIndexOf(".");
-
-    const extension =
-        dot !== -1
-        ? original.substring(dot)
+    const ext = file.name.includes(".")
+        ? "." + file.name.split(".").pop()
         : "";
 
-    return (
-        Date.now() +
-        "-" +
-        crypto.randomUUID() +
-        extension
-    );
-
+    return Date.now() + "-" +
+           crypto.randomUUID() +
+           ext;
 }
 
 
-/* =========================================================
+/* ================================
+   SHA256
+================================ */
+
+async function calculateHash(file){
+
+    hashBox.style.display = "block";
+    hashText.textContent = "Calculating...";
+
+    try{
+
+        const buffer = await file.arrayBuffer();
+
+        const digest =
+            await crypto.subtle.digest("SHA-256",buffer);
+
+        const array =
+            Array.from(new Uint8Array(digest));
+
+        const hex =
+            array.map(
+                b => b.toString(16).padStart(2,"0")
+            ).join("");
+
+        hashText.textContent = hex;
+
+    }catch(e){
+
+        hashText.textContent = "Hash unavailable";
+
+    }
+}
+
+
+/* ================================
    SHOW FILE
-========================================================= */
+================================ */
 
 function showFile(file){
 
-    if(!file){
+    selectedFile = file;
+    downloadURL = null;
 
-        return;
-
-    }
-
-
-    selectedFile =
-        file;
-
-    downloadURL =
-        null;
-
-
-    fileName.textContent =
-        file.name;
-
+    fileName.textContent = file.name;
 
     fileMeta.textContent =
         "Type: " +
@@ -774,495 +507,425 @@ function showFile(file){
         " • Size: " +
         formatSize(file.size);
 
+    fileInfo.style.display = "block";
 
-    fileInfo.style.display =
-        "block";
+    progressBox.style.display = "none";
+    progressBar.style.width = "0%";
+
+    linkBox.style.display = "none";
+
+    downloadBtn.disabled = true;
+    shareBtn.disabled = true;
+    uploadBtn.disabled = false;
+
+    statusText.textContent = "Ready to upload";
+
+    calculateHash(file);
+}
 
 
-    progressBox.style.display =
-        "none";
+/* ================================
+   SELECT FILE
+================================ */
+
+fileInput.addEventListener("change",function(){
+
+    if(this.files.length){
+        showFile(this.files[0]);
+    }
+
+});
 
 
-    progressBar.style.width =
-        "0%";
+/* ================================
+   DRAG DROP
+================================ */
 
+dropZone.addEventListener("dragover",e=>{
+    e.preventDefault();
+    dropZone.classList.add("drag");
+});
+
+dropZone.addEventListener("dragleave",()=>{
+    dropZone.classList.remove("drag");
+});
+
+dropZone.addEventListener("drop",e=>{
+
+    e.preventDefault();
+
+    dropZone.classList.remove("drag");
+
+    if(e.dataTransfer.files.length){
+        showFile(e.dataTransfer.files[0]);
+    }
+
+});
+
+
+/* ================================
+   UPLOAD BUTTON
+================================ */
+
+uploadBtn.addEventListener("click",function(){
+
+    if(!selectedFile){
+        alert("Please select a file first.");
+        return;
+    }
+
+    uploadFile();
+
+});
+
+
+/* ================================
+   UPLOAD
+================================ */
+
+function uploadFile(){
+
+    const file = selectedFile;
+
+    const path = createFileName(file);
+
+    const url =
+        SUPABASE_URL +
+        "/storage/v1/object/" +
+        BUCKET +
+        "/" +
+        encodeURIComponent(path);
+
+
+    progressBox.style.display = "block";
+
+    progressBar.style.width = "0%";
 
     statusText.textContent =
-        "File selected successfully";
+        "Connecting to storage...";
+
+    uploadBtn.disabled = true;
+
+    downloadBtn.disabled = true;
+    shareBtn.disabled = true;
 
 
-    speedText.textContent =
-        "";
+    const xhr = new XMLHttpRequest();
+
+    xhr.open("POST",url,true);
 
 
-    linkBox.style.display =
-        "none";
+    xhr.setRequestHeader(
+        "apikey",
+        SUPABASE_KEY
+    );
+
+    xhr.setRequestHeader(
+        "Authorization",
+        "Bearer " + SUPABASE_KEY
+    );
+
+    xhr.setRequestHeader(
+        "Content-Type",
+        file.type || "application/octet-stream"
+    );
+
+    xhr.setRequestHeader(
+        "x-upsert",
+        "false"
+    );
 
 
-    hashBox.style.display =
-        "none";
+    xhr.upload.onprogress = function(e){
+
+        if(e.lengthComputable){
+
+            const percent =
+                Math.round(
+                    (e.loaded / e.total) * 100
+                );
+
+            progressBar.style.width =
+                percent + "%";
+
+            statusText.textContent =
+                "Uploading... " + percent + "%";
+        }
+
+    };
 
 
-    downloadBtn.disabled =
-        true;
+    xhr.onload = async function(){
+
+        console.log("SUPABASE RESPONSE:",xhr.status,xhr.responseText);
 
 
-    shareBtn.disabled =
-        true;
+        if(xhr.status >= 200 && xhr.status < 300){
+
+            progressBar.style.width = "100%";
+
+            statusText.textContent =
+                "Upload complete ✓ Creating link...";
+
+            try{
+
+                await createDownloadLink(path);
+
+            }catch(error){
+
+                console.error(error);
+
+                statusText.textContent =
+                    "Upload complete, link failed";
+
+                alert(
+                    "Upload ho gaya, lekin download link nahi bana.\n\n" +
+                    error.message
+                );
+
+                uploadBtn.disabled = false;
+            }
+
+        }else{
+
+            let message = xhr.responseText;
+
+            try{
+
+                const data =
+                    JSON.parse(xhr.responseText);
+
+                message =
+                    data.message ||
+                    data.error ||
+                    data.error_description ||
+                    message;
+
+            }catch(e){}
 
 
-    uploadBtn.disabled =
-        false;
+            statusText.textContent =
+                "Upload failed";
+
+            uploadBtn.disabled = false;
+
+            alert(
+                "UPLOAD FAILED\n\n" +
+                message +
+                "\n\nHTTP: " +
+                xhr.status
+            );
+
+        }
+
+    };
 
 
-    /*
-       IMPORTANT:
+    xhr.onerror = function(){
 
-       Do NOT use file.arrayBuffer()
-       for multi-GB files.
+        statusText.textContent =
+            "Network error";
 
-       It can consume huge amounts
-       of phone RAM.
+        uploadBtn.disabled = false;
 
-       SHA-256 is calculated only
-       for files <= 100 MB.
-    */
+        alert(
+            "Network error.\nInternet connection check karo."
+        );
 
-    if(file.size <= 100 * 1024 * 1024){
+    };
 
-        calculateHash(file);
 
-    }else{
-
-        hashBox.style.display =
-            "block";
-
-        hashText.textContent =
-            "Skipped for large file";
-
-    }
+    xhr.send(file);
 
 }
 
 
-/* =========================================================
-   SHA-256
-========================================================= */
+/* ================================
+   CREATE DOWNLOAD LINK
+================================ */
 
-async function calculateHash(file){
+async function createDownloadLink(path){
 
-    hashBox.style.display =
-        "block";
+    const url =
+        SUPABASE_URL +
+        "/storage/v1/object/sign/" +
+        BUCKET;
 
-    hashText.textContent =
-        "Calculating...";
 
+    const response =
+        await fetch(url,{
+
+            method:"POST",
+
+            headers:{
+                "apikey":SUPABASE_KEY,
+
+                "Authorization":
+                    "Bearer " + SUPABASE_KEY,
+
+                "Content-Type":
+                    "application/json"
+            },
+
+            body:JSON.stringify({
+
+                paths:[path],
+
+                expiresIn:86400
+
+            })
+
+        });
+
+
+    const text = await response.text();
+
+    console.log(
+        "SIGN RESPONSE:",
+        response.status,
+        text
+    );
+
+
+    let data;
+
+    try{
+        data = JSON.parse(text);
+    }catch(e){
+        throw new Error(text);
+    }
+
+
+    if(!response.ok){
+
+        throw new Error(
+            data.message ||
+            data.error ||
+            "Could not create signed link"
+        );
+
+    }
+
+
+    let signedURL = null;
+
+
+    if(Array.isArray(data) && data[0]){
+        signedURL = data[0].signedURL;
+    }
+
+    if(!signedURL && data.signedURL){
+        signedURL = data.signedURL;
+    }
+
+
+    if(!signedURL){
+
+        throw new Error(
+            "Supabase ne signed URL return nahi kiya."
+        );
+
+    }
+
+
+    downloadURL =
+        signedURL.startsWith("http")
+        ? signedURL
+        : SUPABASE_URL +
+          "/storage/v1" +
+          signedURL;
+
+
+    downloadURL +=
+        (downloadURL.includes("?") ? "&" : "?") +
+        "download=" +
+        encodeURIComponent(selectedFile.name);
+
+
+    fileLink.textContent = downloadURL;
+
+    linkBox.style.display = "block";
+
+    downloadBtn.disabled = false;
+    shareBtn.disabled = false;
+
+    statusText.textContent =
+        "File ready ✓";
+
+}
+
+
+/* ================================
+   DOWNLOAD
+================================ */
+
+downloadBtn.addEventListener("click",function(){
+
+    if(downloadURL){
+        window.open(downloadURL,"_blank");
+    }
+
+});
+
+
+/* ================================
+   COPY LINK
+================================ */
+
+shareBtn.addEventListener("click",async function(){
+
+    if(!downloadURL) return;
 
     try{
 
-        const buffer =
-            await file.arrayBuffer();
+        await navigator.clipboard.writeText(downloadURL);
 
+        shareBtn.textContent = "✓ Link Copied";
 
-        const digest =
-            await crypto.subtle.digest(
-                "SHA-256",
-                buffer
-            );
+        setTimeout(()=>{
+            shareBtn.textContent = "🔗 Copy Link";
+        },2000);
 
-
-        const array =
-            Array.from(
-                new Uint8Array(digest)
-            );
-
-
-        const hex =
-            array.map(
-                b =>
-                b.toString(16)
-                .padStart(2,"0")
-            ).join("");
-
-
-        hashText.textContent =
-            hex;
-
-
-    }catch(error){
-
-        console.error(
-            "Hash error:",
-            error
-        );
-
-        hashText.textContent =
-            "Hash unavailable";
-
-    }
-
-}
-
-
-/* =========================================================
-   FILE SELECT
-========================================================= */
-
-fileInput.addEventListener(
-    "change",
-    function(){
-
-        if(this.files &&
-           this.files.length){
-
-            showFile(
-                this.files[0]
-            );
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   DRAG OVER
-========================================================= */
-
-dropZone.addEventListener(
-    "dragover",
-    function(e){
-
-        e.preventDefault();
-
-        dropZone.classList.add(
-            "drag"
-        );
-
-    }
-);
-
-
-/* =========================================================
-   DRAG LEAVE
-========================================================= */
-
-dropZone.addEventListener(
-    "dragleave",
-    function(){
-
-        dropZone.classList.remove(
-            "drag"
-        );
-
-    }
-);
-
-
-/* =========================================================
-   DROP
-========================================================= */
-
-dropZone.addEventListener(
-    "drop",
-    function(e){
-
-        e.preventDefault();
-
-        dropZone.classList.remove(
-            "drag"
-        );
-
-
-        if(
-            e.dataTransfer &&
-            e.dataTransfer.files &&
-            e.dataTransfer.files.length
-        ){
-
-            showFile(
-                e.dataTransfer.files[0]
-            );
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   UPLOAD BUTTON
-========================================================= */
-
-uploadBtn.addEventListener(
-    "click",
-    function(){
-
-        if(!selectedFile){
-
-            alert(
-                "Please select a file first."
-            );
-
-            return;
-
-        }
-
-
-        startUpload();
-
-    }
-);
-
-
-/* =========================================================
-   START TUS UPLOAD
-========================================================= */
-
-function startUpload(){
-
-    if(!window.tus){
+    }catch(e){
 
         alert(
-            "Upload library load nahi hui. Internet connection check karo."
+            "Link:\n\n" +
+            downloadURL
         );
-
-        return;
 
     }
 
+});
 
-    const file =
-        selectedFile;
 
+/* ================================
+   REMOVE
+================================ */
 
-    const path =
-        createFileName(file);
+clearBtn.addEventListener("click",function(){
 
+    selectedFile = null;
+    downloadURL = null;
 
-    const endpoint =
-        "https://" +
-        SUPABASE_PROJECT +
-        ".storage.supabase.co" +
-        "/storage/v1/upload/resumable";
+    fileInput.value = "";
 
+    fileInfo.style.display = "none";
 
-    progressBox.style.display =
-        "block";
+    progressBox.style.display = "none";
 
+    linkBox.style.display = "none";
 
-    progressBar.style.width =
-        "0%";
+    hashBox.style.display = "none";
 
+    progressBar.style.width = "0%";
 
-    statusText.textContent =
-        "Connecting to FastFile...";
+    uploadBtn.disabled = false;
+    downloadBtn.disabled = true;
+    shareBtn.disabled = true;
 
+});
 
-    speedText.textContent =
-        "Speed: 0 MB/s";
+</script>
 
-
-    uploadBtn.disabled =
-        true;
-
-
-    downloadBtn.disabled =
-        true;
-
-
-    shareBtn.disabled =
-        true;
-
-
-    uploadStartTime =
-        Date.now();
-
-
-    lastUploaded =
-        0;
-
-
-    lastTime =
-        Date.now();
-
-
-    currentUpload =
-        new tus.Upload(
-            file,
-            {
-
-                endpoint:endpoint,
-
-                retryDelays:[
-                    0,
-                    1000,
-                    3000,
-                    5000,
-                    10000
-                ],
-
-
-                chunkSize:
-                    6 * 1024 * 1024,
-
-
-                headers:{
-
-                    Authorization:
-                        "Bearer " +
-                        SUPABASE_KEY
-
-                },
-
-
-                metadata:{
-
-                    bucketName:
-                        BUCKET,
-
-                    objectName:
-                        path,
-
-                    contentType:
-                        file.type ||
-                        "application/octet-stream",
-
-                    cacheControl:
-                        "3600"
-
-                },
-
-
-                onError:
-                function(error){
-
-                    console.error(
-                        "TUS ERROR:",
-                        error
-                    );
-
-
-                    statusText.textContent =
-                        "Upload failed";
-
-
-                    speedText.textContent =
-                        "";
-
-
-                    uploadBtn.disabled =
-                        false;
-
-
-                    alert(
-                        "UPLOAD FAILED\n\n" +
-                        (
-                            error.message ||
-                            "Unknown upload error"
-                        )
-                    );
-
-                },
-
-
-                onProgress:
-                function(
-                    bytesUploaded,
-                    bytesTotal
-                ){
-
-                    const percent =
-                        (
-                            bytesUploaded /
-                            bytesTotal
-                        ) * 100;
-
-
-                    progressBar.style.width =
-                        percent.toFixed(1) +
-                        "%";
-
-
-                    const now =
-                        Date.now();
-
-
-                    const elapsed =
-                        (
-                            now -
-                            uploadStartTime
-                        ) / 1000;
-
-
-                    const instantBytes =
-                        bytesUploaded -
-                        lastUploaded;
-
-
-                    const instantTime =
-                        (
-                            now -
-                            lastTime
-                        ) / 1000;
-
-
-                    let speed =
-                        0;
-
-
-                    if(
-                        instantTime > 0
-                    ){
-
-                        speed =
-                            instantBytes /
-                            instantTime;
-
-                    }
-
-
-                    if(
-                        speed <= 0 &&
-                        elapsed > 0
-                    ){
-
-                        speed =
-                            bytesUploaded /
-                            elapsed;
-
-                    }
-
-
-                    speedText.textContent =
-                        "Speed: " +
-                        formatSpeed(speed);
-
-
-                    statusText.textContent =
-                        "Uploading... " +
-                        percent.toFixed(1) +
-                        "% • " +
-                        formatSize(bytesUploaded) +
-                        " / " +
-                        formatSize(bytesTotal);
-
-
-                    lastUploaded =
-                        bytesUploaded;
-
-
-                    lastTime =
-                        now;
-
-                },
-
-
-                onSuccess:
-                async function(){
-
-                    progressBar.style.width =
-                        "100%";
-
-
-               
+</body>
+</html>
